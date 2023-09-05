@@ -1,3 +1,44 @@
 // Add any unique troubleshooting steps here.
 
 For troubleshooting common Partner Solution issues, refer to the https://fwd.aws/rA69w?[AWS Partner Solution General Information Guide^].
+
+For general EKS troubleshooting, see 
+https://aws-quickstart.github.io/quickstart-amazon-eks/[Amazon EKS on the AWS Cloud^].
+
+For {partner-company-name} {partner-product-short-name}–specific troubleshooting, see how to 
+https://learn.hashicorp.com/tutorials/consul/troubleshooting[Troubleshoot Common Consul Issues^].
+
+== Best practices for using Consul on AWS
+
+The following best practices are enabled by default for this Partner Solution:
+
+* Enable Consul ACLs for token-based authentication. This lets users use a token to authenticate and
+access the Consul control plane and APIs. For more information, see
+https://learn.hashicorp.com/tutorials/consul/access-control-setup-production[Secure Consul with Access Control Lists (ACLs)^].
+
+* Enable Gossip encryption. Gossip encryption helps to ensure that the ACL authentication between the server and client agents (RPC) are protected from sniffing. For more information, see
+https://learn.hashicorp.com/tutorials/consul/gossip-encryption-secure?in=consul/security-networking#gossip-encryption[Secure Gossip Communication with Encryption^].
+
+* Enable Agent TLS encryption. Consul uses TLS to verify the authenticity of servers and clients. For more information, see https://learn.hashicorp.com/tutorials/consul/tls-encryption-secure?in=consul/security-networking[Secure Consul Agent Communication with TLS Encryption^].
+
+* Enable SSL certificates on Consul agents. This helps to protect the Consul agent communication from attacks. For more information, see https://learn.hashicorp.com/tutorials/consul/tls-encryption-openssl-secure?in=consul/day-2-agent-authentication[Secure Consul Agent Communication with TLS Encryption and OpenSSL Certificates^].
+
+* Enable Connect Inject and the gRPC protocol. This enables the Envoy proxy on the client pods. For more information, see https://learn.hashicorp.com/tutorials/consul/service-mesh-with-envoy-proxy#enable-connect-and-grpc[Secure Service Communication with Consul Service Mesh and Envoy^].
+
+== Security
+// Provide post-deployment best practices for using the technology on AWS, including considerations such as migrating
+// data, backups, ensuring high performance, high availability, etc. Link to software documentation for detailed
+// information.
+
+* End-to-end TLS is enforced.
+* A dedicated Kubernetes namespace is created for {partner-product-name} Kubernetes resources.
+* {partner-product-name} runs on dedicated Kubernetes nodes.
+* The {partner-product-short-name} UI is provided for exploratory purposes. We recommend keeping the
+{partner-product-short-name} UI accessible only inside the VPC or disabling access to it by setting the
+permitted IP range to 127.0.0.1/32.
+
+== Other useful information
+//Provide any other information of interest to users, especially focusing on areas where AWS or cloud usage differs
+//from on-premises usage.
+
+* https://www.consul.io/docs/guides/kuberenetes-deployment[Deploy Consul with Kubernetes^]
